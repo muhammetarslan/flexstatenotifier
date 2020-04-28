@@ -9,16 +9,17 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AmazonFlexNotifier {
+public class FlexNotifierTest {
+
 
     @Test
-    public void notifier(){
+    public void notifierTest() {
         WebDriverManager.chromedriver().setup();
-        WebDriver driver=new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
         driver.get("https://flex.amazon.com/get-started");
-        List<WebElement> divs=driver.findElements(By.xpath("//div[@class='container  padding-top-xlarge swa background-color-transparent']//div"));
-        List<String> texts=divs.stream().map(x->x.getText()).collect(Collectors.toList());
-        Assert.assertFalse(texts.contains("Georgia"));
+        List<WebElement> divs = driver.findElements(By.xpath("//div[@class='container  padding-top-xlarge swa background-color-transparent']//div"));
+        List<String> texts = divs.stream().map(x -> x.getText()).collect(Collectors.toList());
+        Assert.assertTrue(texts.contains("Georgia"));
         System.out.println(texts);
         driver.quit();
     }
