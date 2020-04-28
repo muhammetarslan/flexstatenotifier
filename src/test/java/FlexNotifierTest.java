@@ -19,8 +19,8 @@ public class FlexNotifierTest {
         driver.get("https://flex.amazon.com/get-started");
         List<WebElement> divs = driver.findElements(By.xpath("//div[@class='container  padding-top-xlarge swa background-color-transparent']//div"));
         List<String> texts = divs.stream().map(x -> x.getText()).collect(Collectors.toList());
-        Assert.assertTrue(texts.contains("Georgia"));
         System.out.println(texts);
+        Assert.assertFalse(texts.contains("Georgia"));
         driver.quit();
     }
 }
